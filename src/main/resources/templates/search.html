@@ -8,13 +8,15 @@
 
 <div class="container body-content">
 
-    <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
+    <!-- <h1 th:text="${#strings.capitalizeWords(title)}"></h1> -->
 
     <form th:action="@{/search/results}">
         <h2>Search by:</h2>
 
         <p>
+
             <span th:each="column : ${columns}">
+
                 <input
                         type="radio"
                         name="searchType"
@@ -37,6 +39,21 @@
     <hr />
 
     <!-- TODO #2 - Loop over jobs map to display all job fields -->
+    <!-- <div th:if="${jobs} and ${jobs.size()}"> -->
+    <!-- <p th:unless="${jobs} and ${jobs.size()}"> no jobs</p> -->
+
+    <!-- <h1 th:text="${#strings.capitalizeWords(title)}"></h1> -->
+    <h3 th:text="${#strings.capitalizeWords(jobsSize)}"></h3>
+    <div th:each ="job : ${jobs}">
+        <table class="job-listing">
+            <tr th:each="jobItem, idx : ${job}" th:class="${idx.odd} ? 'odd'">
+                <b><td th:text="${#strings.capitalizeWords(jobItem.key)}"></td></b>
+                <td th:text="${jobItem.value}"></td>
+            </tr>
+        </table>
+        <p></p>
+
+    </div>
 
 </div>
 

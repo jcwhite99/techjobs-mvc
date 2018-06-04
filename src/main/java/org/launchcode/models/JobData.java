@@ -13,7 +13,9 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
+
  * Created by LaunchCode
+
  */
 public class JobData {
 
@@ -48,6 +50,7 @@ public class JobData {
         Collections.sort(values);
 
         return values;
+
     }
 
     public static ArrayList<HashMap<String, String>> findAll() {
@@ -70,6 +73,7 @@ public class JobData {
      * @param value Value of teh field to search for
      * @return List of all jobs matching the criteria
      */
+
     public static ArrayList<HashMap<String, String>> findByColumnAndValue(String column, String value) {
 
         // load data, if not already loaded
@@ -82,11 +86,15 @@ public class JobData {
             String aValue = row.get(column);
 
             if (aValue != null && aValue.toLowerCase().contains(value.toLowerCase())) {
+
                 jobs.add(row);
+
             }
+
         }
 
         return jobs;
+
     }
 
     /**
@@ -112,21 +120,27 @@ public class JobData {
 
                     // Finding one field in a job that matches is sufficient
                     break;
+
                 }
+
             }
+
         }
 
         return jobs;
+
     }
 
     /**
      * Read in data from a CSV file and store it in a list
      */
+
     private static void loadData() {
 
         // Only load data once
         if (isDataLoaded) {
             return;
+
         }
 
         try {
@@ -148,18 +162,23 @@ public class JobData {
 
                 for (String headerLabel : headers) {
                     newJob.put(headerLabel, record.get(headerLabel));
+
                 }
 
                 allJobs.add(newJob);
+
             }
 
             // flag the data as loaded, so we don't do it twice
             isDataLoaded = true;
-
         } catch (IOException e) {
             System.out.println("Failed to load job data");
             e.printStackTrace();
+
         }
+
     }
+
+
 
 }

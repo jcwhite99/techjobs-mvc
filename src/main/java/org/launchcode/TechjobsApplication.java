@@ -8,5 +8,7 @@ public class TechjobsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TechjobsApplication.class, args);
+
 	}
+
 }
